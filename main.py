@@ -14,7 +14,8 @@ with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
         killed=1
 
 if killed > 0:
-    resp=mcr.command("/tell @a ZAP! buttbot zapped {} dragonflies".format(killed))
+    with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
+        resp=mcr.command("/tell @a ZAP! buttbot zapped {} dragonflies".format(killed))
 
 dbcon = MySQLdb.connect(host=os.environ['db_host'],
                         user=os.environ['db_username'],
