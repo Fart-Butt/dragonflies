@@ -2,6 +2,7 @@ from mcrcon import MCRcon
 import os
 import MySQLdb
 import datetime
+import random
 
 df_killed=0
 with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
@@ -23,10 +24,20 @@ with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
     else:
         ms_killed=1
 
+#confuse 'em
+stuff=[
+    "trees",
+    "trains",
+    "contraptions",
+    "diamond ore",
+    "bees",
+    "players"
+]
 
 if df_killed > 0 or ms_killed > 0:
     with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
-        resp=mcr.command("/tell @a ZAP! buttbot zapped {} dragonflies and {} magic shells".format(df_killed, ms_killed))
+        resp=mcr.command("/tell @a ZAP! buttbot zapped {} dragonflies, {} magic shells and {} {}"
+                         .format(df_killed, ms_killed,random.choice(stuff),random.randint(0,5000)))
 
 
 
