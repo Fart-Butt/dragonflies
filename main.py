@@ -34,10 +34,14 @@ stuff=[
     "players"
 ]
 
+if random.randint(1,3) == 3:
+    zap = ("/tell @a ZAP! buttbot zapped {} dragonflies, {} magic shells and {} {}"
+           .format(df_killed, ms_killed, random.choice(stuff),random.randint(1,10)))
+else:
+    zap = "/tell @a ZAP! buttbot zapped {} dragonflies and {} magic shells".format(df_killed, ms_killed)
 if df_killed > 0 or ms_killed > 0:
     with MCRcon(os.environ['RCON_HOST'], os.environ['RCON_PASSWORD']) as mcr:
-        resp=mcr.command("/tell @a ZAP! buttbot zapped {} dragonflies, {} magic shells and {} {}"
-                         .format(df_killed, ms_killed,random.randint(0,5000),random.choice(stuff)))
+        resp=mcr.command(zap)
 
 
 
