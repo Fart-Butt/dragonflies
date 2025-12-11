@@ -31,10 +31,16 @@ stuff=[
     "contraptions",
     "diamond ore",
     "bees",
-    "players"
+    "players",
+    "elevators",
+    "dirt",
+    "ferrets",
+    "lootr chests",
+    "barrels",
+    "andesite"
 ]
 
-if random.randint(1,3) == 3:
+if random.randint(1,5) == 3:
     zap = ("/tell @a ZAP! buttbot zapped {} dragonflies, {} magic shells and {} {}"
            .format(df_killed, ms_killed,random.randint(1,10), random.choice(stuff)))
 else:
